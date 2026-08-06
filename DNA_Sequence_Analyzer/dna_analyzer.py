@@ -15,6 +15,20 @@ if not validate_dna_sequence(DNA):
     print("Invalid DNA sequence. Please enter a sequence containing only A, T, G, and C.")
     exit()
 
+#Adding Reverse Complement Function
+def reverse_complement(sequence):
+    complement = {
+        "A": "T",
+        "T": "A",
+        "G": "C",
+        "C": "G"
+    }
+    reverse_sequence = sequence[::-1]
+    reverse_complement_sequence = ""
+    for base in reverse_sequence:
+        reverse_complement_sequence += complement[base]
+    return reverse_complement_sequence
+
 #Confirm the DNA sequence entered by the user
 print("You entered: ", DNA)
 DNA = DNA.upper()
@@ -40,6 +54,10 @@ A = DNA.count("A")
 T = DNA.count("T")
 AT_content = ((A + T) / length) * 100
 print("AT content:", round(AT_content, 2), "%")
+
+#Adding the reverse complement of the DNA sequence
+reverse_comp = reverse_complement(DNA)
+print("Reverse complement: ", reverse_comp)
 
 #Calculate percentage of each base in the DNA sequence
 A_percentage = (A / length) * 100
