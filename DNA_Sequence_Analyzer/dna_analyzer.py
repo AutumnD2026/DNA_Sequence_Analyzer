@@ -125,3 +125,18 @@ print("Transcribed RNA sequence: ", RNA_sequence)
 
 protein_sequence = translate_RNA(RNA_sequence)
 print("Translated protein sequence: ", protein_sequence)
+
+#Create FASTA reading function
+def read_fasta(filename):
+    """ Reads a FASTA file and returns the sequence as a string.
+    """
+    with open(filename, "r") as file:
+        lines = file.readlines()
+        sequence = ""
+    sequence_id = lines[0].strip().replace(">", "")
+    sequence = "".join(lines[1:]).replace("\n", "")
+    return sequence_id, sequence
+
+sequence_name, DNA = read_fasta("example.fasta")
+print("Sequence ID", sequence_name)
+print("DNA Sequence:", DNA)
