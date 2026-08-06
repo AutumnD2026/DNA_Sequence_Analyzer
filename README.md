@@ -39,3 +39,7 @@ Percentage of C: 30.0 %
 -DNA to RNA transcription
 -Protein translation 
 -FASTA file support
+
+## Features 
+-Accepts user-provided DNA sequences
+-Validates DNA sequences to ensure only A, T, G, and C bases are used
