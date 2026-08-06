@@ -2,7 +2,18 @@
 print("Welcome to the DNA Sequence Analyzer!")
 
 #Asking the user to input a DNA sequence
-DNA = input("Enter DNA sequence: ")
+DNA = input("Enter DNA sequence: "). upper()
+
+#Adding DNA Sequence Validation
+def validate_dna_sequence(sequence):
+    valid_bases = ("ATGC")
+    for base in sequence:
+        if base not in valid_bases:
+            return False
+    return True
+if not validate_dna_sequence(DNA):
+    print("Invalid DNA sequence. Please enter a sequence containing only A, T, G, and C.")
+    exit()
 
 #Confirm the DNA sequence entered by the user
 print("You entered: ", DNA)
@@ -39,3 +50,4 @@ print("Percentage of A:", round(A_percentage, 2), "%")
 print("Percentage of T:", round(T_percentage, 2), "%")
 print("Percentage of G:", round(G_percentage, 2), "%")
 print("Percentage of C:", round(C_percentage, 2), "%")  
+
