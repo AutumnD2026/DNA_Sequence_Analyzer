@@ -15,6 +15,9 @@ It can do the following functions:
 -Variables 
 -User input 
 -Basic bioinformatics 
+-Data validation 
+-Command line workflow
+-Git/GitHub version control
 
 ## Example 
 
