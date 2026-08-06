@@ -74,5 +74,54 @@ def transcribe_DNA(sequence):
     """ Converts a DNA sequence into an RNA sequence.
     """
     return sequence.replace("T", "U")
+
+#Creating codon table
+CODON_TABLE = {
+   "UUU": "F", "UUC": "F",
+   "UUA": "L", "UUG": "L",
+   "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
+   "AUU": "I", "AUC": "I", "AUA": "I",
+   "AUG": "M",
+   "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
+   "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
+   "AGU": "S", "AGC": "S",
+   "CCU": "P", "CCC": "P", "CCA": "P",
+   "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+   "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+   "UAU": "Y", "UAC": "Y",
+   "CAU": "H", "CAC": "H",
+   "CAA": "Q", "CAG": "Q",
+   "AAU": "N", "AAC": "N",
+   "AAA": "K", "AAG": "K",
+   "GAU": "D", "GAC": "D",
+   "GAA": "E", "GAG": "E",
+   "UGU": "C", "UGC": "C",
+   "UGG": "W",
+   "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+   "AGA": "R", "AGG": "R",
+   "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G",
+   "UAA": "*",
+   "UAG": "*",
+   "UGA": "*"
+}
+
+def translate_RNA(RNA_sequence):
+    """ Translates an RNA sequence into a protein sequence.
+    Stop translation when a stop codon is encountered."""
+    protein = ""
+    for i in range(0, len(RNA_sequence), 3):
+        codon = RNA_sequence[i:i+3]
+
+        if len(codon) != 3:
+            break
+        amino_acid = CODON_TABLE.get(codon)
+        if amino_acid == "*":
+            break
+        if amino_acid:
+            protein += amino_acid
+    return protein
 RNA_sequence = transcribe_DNA(DNA)
-print("Transcribed RNA sequence: ", RNA_sequence)
+print("Transcribed RNA sequence: ", RNA_sequence)   
+
+protein_sequence = translate_RNA(RNA_sequence)
+print("Translated protein sequence: ", protein_sequence)
