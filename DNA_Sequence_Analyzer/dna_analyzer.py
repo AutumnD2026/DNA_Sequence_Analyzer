@@ -69,3 +69,10 @@ print("Percentage of T:", round(T_percentage, 2), "%")
 print("Percentage of G:", round(G_percentage, 2), "%")
 print("Percentage of C:", round(C_percentage, 2), "%")  
 
+#Adding transcription function to convert DNA to RNA
+def transcribe_DNA(sequence): 
+    """ Converts a DNA sequence into an RNA sequence.
+    """
+    return sequence.replace("T", "U")
+RNA_sequence = transcribe_DNA(DNA)
+print("Transcribed RNA sequence: ", RNA_sequence)
